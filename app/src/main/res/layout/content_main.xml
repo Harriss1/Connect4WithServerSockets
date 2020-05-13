@@ -9,12 +9,172 @@
     tools:showIn="@layout/activity_main">
 
     <TextView
+        android:id="@+id/textViewResumePrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Resume Last Game?"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ButtonResumeLast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Yes"
+        app:layout_constraintStart_toEndOf="@+id/textViewResumePrompt"
+        app:layout_constraintTop_toTopOf="@+id/textViewResumePrompt" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="182dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Colour Red has won."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonResumeLast" />
+
+    <Button
+        android:id="@+id/ButtonRestart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Restart Game"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/ButtonSwitchColour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Switch Colour"
+        app:layout_constraintStart_toEndOf="@+id/ButtonRestart"
+        app:layout_constraintTop_toTopOf="@+id/ButtonRestart" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="321dp"
+        android:layout_height="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonRestart" />
+
+    <Button
+        android:id="@+id/ButtonColumn1"
+        android:layout_width="36dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="C1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space" />
+
+    <Button
+        android:id="@+id/ButtonColumn2"
+        android:layout_width="36dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="C2"
+        app:layout_constraintStart_toEndOf="@+id/ButtonColumn1"
+        app:layout_constraintTop_toBottomOf="@+id/space" />
+
+    <Button
+        android:id="@+id/ButtonColumn3"
+        android:layout_width="36dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="C3"
+        app:layout_constraintStart_toEndOf="@+id/ButtonColumn2"
+        app:layout_constraintTop_toBottomOf="@+id/space" />
+
+    <Button
+        android:id="@+id/ButtonColumn4"
+        android:layout_width="36dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="C4"
+        app:layout_constraintStart_toEndOf="@+id/ButtonColumn3"
+        app:layout_constraintTop_toBottomOf="@+id/space" />
+
+    <Button
+        android:id="@+id/ButtonColumn5"
+        android:layout_width="36dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="C5"
+        app:layout_constraintStart_toEndOf="@+id/ButtonColumn4"
+        app:layout_constraintTop_toBottomOf="@+id/space" />
+
+    <Button
+        android:id="@+id/ButtonColumn6"
+        android:layout_width="36dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="C6"
+        app:layout_constraintStart_toEndOf="@+id/ButtonColumn5"
+        app:layout_constraintTop_toBottomOf="@+id/space" />
+
+    <Button
+        android:id="@+id/ButtonColumn7"
+        android:layout_width="36dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="C7"
+        app:layout_constraintStart_toEndOf="@+id/ButtonColumn6"
+        app:layout_constraintTop_toBottomOf="@+id/space" />
+
+    <TextView
+        android:id="@+id/textViewTempGrid"
+        android:layout_width="287dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:typeface="monospace"
+        android:text="-------\n--x--o-\n--xxoo-"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPlaceholderExplanation" />
+
+    <TextView
+        android:id="@+id/textViewPlaceholderExplanation"
+        android:layout_width="218dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Grid placeholder in textformat:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonColumn1" />
+
+    <Button
+        android:id="@+id/ButtonDismissLast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Dismiss"
+        app:layout_constraintStart_toEndOf="@+id/ButtonResumeLast"
+        app:layout_constraintTop_toTopOf="@+id/textViewResumePrompt" />
 
 </android.support.constraint.ConstraintLayout>
