@@ -2,32 +2,37 @@ package com.example.a200327connectfour.View;
 
 import android.support.design.animation.Positioning;
 
+import com.example.a200327connectfour.Model.Logging;
+
 import java.util.ArrayList;
 
-public class GridDisplay {
+public class GridDisplayContainer {
+
+    Logging log = new Logging("GridDisplayContainer.java");
 
     private String fieldOfPlayerOne="PlayerOne";
     private String fieldOfPlayerTwo="PlayerTwo";
     private String fieldNotOccupied="NotOccupied";
+    private String playerOneColor;
+    private String playerTwoColor;
+    public final String colorBlue = "Blue";
+    public final String colorRed = "Red";
 
     private class Position{
         int posX;
         int posY;
         String fieldOccupiedBy;
         boolean alreadyDrawn=false;
-        boolean drawMoveAnimation=false;
+        boolean drawMoveAnimation=true;
     }
 
     private ArrayList<Position> playfieldGrid;
 
-    public GridDisplay(){
+    public GridDisplayContainer(){
         firstLoad();
-        setPosition(2,3,getFieldOfPlayerTwoString());
-        Position test=new Position();
-        test.posY=4;
-        test.posX=4;
-        test.fieldOccupiedBy=fieldOfPlayerTwo;
-        playfieldGrid.set(3,test);
+        playerOneColor=colorBlue;
+        playerTwoColor=colorRed;
+        //setPosition(2,3,getFieldOfPlayerOneString());
     }
 
     private void firstLoad(){
@@ -43,6 +48,18 @@ public class GridDisplay {
             }
         }
     }
+
+    public void switchPlayerColor(){
+        if(playerOneColor==colorBlue){
+            playerOneColor=colorRed;
+            playerTwoColor=colorBlue;
+        } else {
+            playerOneColor=colorBlue;
+            playerTwoColor=colorRed;
+        }
+    }
+    public String getPlayerOneColor(){ return playerOneColor;}
+    public String getPlayerTwoColor(){ return playerTwoColor;}
 
     public String getFieldOfPlayerOneString(){
         return fieldOfPlayerOne;
@@ -63,17 +80,32 @@ public class GridDisplay {
         }
         return fieldNotOccupied;
     }
+    public boolean getFieldPositionAnimation(int x, int y){
+        for (Position e:playfieldGrid
+        ) {
+            if(e.posY==y && e.posX==x){
+                //log.add("getFieldPositionAnimation():"+Boolean.toString(e.drawMoveAnimation));
+                return e.drawMoveAnimation;
+
+            }
+        }
+        return true;
+    }
 
     public void setPosition(int posX, int posY, String content){
         //check if content valid
-        if(!(content.equals(fieldOfPlayerOne))&&!(content.equals(fieldOfPlayerTwo)))
+        if((!(content.equals(fieldOfPlayerOne)))&&(!(content.equals(fieldOfPlayerTwo)))&&(!(content.equals(fieldNotOccupied))))
         {
             //error, wrong content input
             return;
         }
+        if(posX<1 || posX >8 || posY < 1 || posY >7){
+            //error, position out of bounds
+            return;
+        }
         for (Position e:playfieldGrid) {
             if(e.posY==posY && e.posX==posX){
-                e.fieldOccupiedBy=getFieldOfPlayerOneString();
+                e.fieldOccupiedBy=content;
             }
         }
     }

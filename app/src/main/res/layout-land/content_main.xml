@@ -2,23 +2,43 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
-    android:id="@+id/constraintLayout"
     tools:showIn="@layout/activity_main">
+
+    <ImageView
+        android:id="@+id/ImageTurnIndicator"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toStartOf="@+id/space"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bluesmall" />
+
+    <Button
+        android:id="@+id/ButtonMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewResumePrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="Resume Last Game?"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ConstraintForGridMesh" />
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/turnOrWinMessage"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonRestart" />
 
     <Button
         android:id="@+id/ButtonResumeLast"
@@ -27,33 +47,33 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="Yes"
-        app:layout_constraintStart_toEndOf="@+id/textViewResumePrompt"
-        app:layout_constraintTop_toTopOf="@+id/textViewResumePrompt" />
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/textViewResumePrompt"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResumePrompt" />
 
     <TextView
         android:id="@+id/turnOrWinMessage"
-        android:layout_width="214dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="138dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="Blue's Turn. Colour Red has won."
-        app:layout_constraintBottom_toTopOf="@+id/space"
         app:layout_constraintEnd_toEndOf="@+id/ImageTurnIndicator"
-        app:layout_constraintStart_toStartOf="@+id/ImageTurnIndicator"
+        app:layout_constraintEnd_toStartOf="@+id/space"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ImageTurnIndicator" />
 
     <Button
         android:id="@+id/ButtonRestart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:text="Restart Game"
         android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/space"
-        app:layout_constraintTop_toBottomOf="@+id/ConstraintForGridMesh" />
+        app:layout_constraintStart_toStartOf="@+id/turnOrWinMessage"
+        app:layout_constraintTop_toBottomOf="@+id/turnOrWinMessage" />
 
     <Button
         android:id="@+id/ButtonSwitchColour"
@@ -68,23 +88,11 @@
 
     <Space
         android:id="@+id/space"
-        android:layout_width="350dp"
-        android:layout_height="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_width="321dp"
+        android:layout_height="360dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/SpaceBottom" />
-
-    <Space
-        android:id="@+id/SpaceBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="416dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,15 +101,15 @@
 
     <TextView
         android:id="@+id/textViewTempGrid"
-        android:layout_width="141dp"
-        android:layout_height="224dp"
+        android:layout_width="301dp"
+        android:layout_height="205dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:typeface="monospace"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPlaceholderExplanation"
-        tools:visibility="invisible" />
+        app:layout_constraintStart_toEndOf="@+id/ConstraintForGridMesh"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonRestart"
+        tools:visibility="gone" />
 
     <TextView
         android:id="@+id/textViewPlaceholderExplanation"
@@ -109,11 +117,10 @@
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:text="Grid placeholder in textformat:"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/space"
+        app:layout_constraintStart_toEndOf="@+id/space"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonTestLoad"
         tools:visibility="invisible" />
 
     <Button
@@ -123,29 +130,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="Dismiss"
-        app:layout_constraintStart_toEndOf="@+id/ButtonResumeLast"
-        app:layout_constraintTop_toTopOf="@+id/textViewResumePrompt" />
-
-    <TextView
-        android:id="@+id/debug"
-        android:layout_width="384dp"
-        android:layout_height="134dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:fadeScrollbars="false"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:scrollbars="vertical"
-        android:scrollHorizontally="false"
-        android:text="debug"
-        android:verticalScrollbarPosition="right"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ButtonResumeLast" />
-
+        app:layout_constraintStart_toEndOf="@+id/ButtonResumeLast"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResumePrompt" />
 
     <Button
         android:id="@+id/ButtonTestLoad"
@@ -153,10 +140,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:text="TestLoad"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/ButtonSwitchColour"
-        app:layout_constraintTop_toTopOf="@+id/ButtonSwitchColour" />
+        app:layout_constraintTop_toBottomOf="@+id/turnOrWinMessage" />
 
     <Button
         android:id="@+id/ButtonTestSave"
@@ -165,17 +153,38 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="TSave"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/ButtonDismissLast"
-        app:layout_constraintTop_toTopOf="@+id/ButtonDismissLast"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toTopOf="@+id/ButtonDismissLast" />
+
+    <TextView
+        android:id="@+id/debug"
+        android:layout_width="195dp"
+        android:layout_height="266dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fadeScrollbars="false"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
+        android:scrollHorizontally="false"
+        android:text="debug"
+        android:verticalScrollbarPosition="right"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/space"
+        app:layout_constraintTop_toBottomOf="@+id/ButtonMenu"
+        app:layout_constraintVertical_bias="0.512" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/ConstraintForAllPieces"
         android:layout_width="320dp"
         android:layout_height="320dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/space"
         app:layout_constraintStart_toStartOf="@+id/space"
-        app:layout_constraintTop_toBottomOf="@+id/space">
+        app:layout_constraintTop_toTopOf="@+id/space">
 
     </android.support.constraint.ConstraintLayout>
 
@@ -183,9 +192,10 @@
         android:id="@+id/ConstraintForGridMesh"
         android:layout_width="320dp"
         android:layout_height="320dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/space"
         app:layout_constraintStart_toStartOf="@+id/space"
-        app:layout_constraintTop_toBottomOf="@+id/space">
+        app:layout_constraintTop_toTopOf="@+id/space">
 
         <Button
             android:id="@+id/ButtonColumn1"
@@ -290,33 +300,7 @@
             android:text="C8"
             app:layout_constraintStart_toEndOf="@+id/ButtonColumn7"
             app:layout_constraintTop_toTopOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
-
-    <Button
-        android:id="@+id/ButtonMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ImageTurnIndicator"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/ConstraintForGridMesh"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bluesmall" />
-
 
 </android.support.constraint.ConstraintLayout>
