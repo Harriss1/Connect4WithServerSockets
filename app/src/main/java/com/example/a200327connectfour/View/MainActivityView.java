@@ -2,8 +2,10 @@ package com.example.a200327connectfour.View;
 
 
 import android.content.Context;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,9 @@ public class MainActivityView implements View.OnClickListener {
     View view;
     MainActivityDrawer mainActivityDrawer;
     ViewModel viewModel;
+    private static int aboutCounterForEnablingDevModeButton=0;
+    private static boolean showDevModeActivationButton=false;
+    private static boolean checkDevMode=false;
 
     public MainActivityView(Context context, View view, MainActivity activity){
         this.activity=activity;
@@ -68,6 +73,7 @@ public class MainActivityView implements View.OnClickListener {
     }
     public void setEventAppOnCreateButInstanceStateExists() {
         userInterfaceActionSwitchAndViewUpdate("AppOnCreateActiveInstance");
+        if(checkDevMode) view.findViewById(R.id.debug).setVisibility(View.VISIBLE);
     }
 
 
@@ -378,6 +384,11 @@ public class MainActivityView implements View.OnClickListener {
         switch (menuID){
             case "About" : {
                 Toast.makeText(context, "By Karl Klotz, September 2020", Toast.LENGTH_LONG).show();
+                if(aboutCounterForEnablingDevModeButton >= 2){
+                    showDevModeActivationButton=true;
+                } else {
+                    aboutCounterForEnablingDevModeButton++;
+                }
                 break;
             }
             case "Restart Game" : {
@@ -389,9 +400,25 @@ public class MainActivityView implements View.OnClickListener {
                 break;
             }
             case "Developer Mode" :{
-                Toast.makeText(context, "Dev Mode Not Implemented", Toast.LENGTH_LONG).show();
+                if(!checkDevMode){
+                    Toast.makeText(context, "Development Info showing", Toast.LENGTH_LONG).show();
+                    checkDevMode=true;
+                    view.findViewById(R.id.debug).setVisibility(View.VISIBLE);
+                } else {
+                    Toast.makeText(context, "Development Info hidden", Toast.LENGTH_LONG).show();
+                    checkDevMode=false;
+                    showDevModeActivationButton=false;
+                    aboutCounterForEnablingDevModeButton=0;
+                    view.findViewById(R.id.debug).setVisibility(View.INVISIBLE);
+                }
             }
         }
+    }
+
+    public String getShowDevModeActivationButton() {
+        if(showDevModeActivationButton)
+            return "DevMode";
+        else return "none";
     }
 
 

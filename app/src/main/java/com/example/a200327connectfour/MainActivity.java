@@ -50,10 +50,12 @@ public class MainActivity extends AppCompatActivity {
                 //Creating the instance of PopupMenu
                 PopupMenu popup = new PopupMenu(MainActivity.this, buttonPopupMenu);
                 //Inflating the Popup using xml file
+
                 popup.getMenuInflater()
                         .inflate(R.menu.mypopupmenu, popup.getMenu());
 
                 //registering popup with OnMenuItemClickListener
+
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         /*Toast.makeText(
@@ -65,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-
+                if(mainActivityView.getShowDevModeActivationButton().equals("DevMode"))
+                    popup.getMenu().add("Developer Mode");
                 popup.show(); //showing popup menu
             }
         });

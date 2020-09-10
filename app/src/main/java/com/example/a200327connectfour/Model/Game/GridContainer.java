@@ -9,6 +9,8 @@ public class GridContainer {
     //neither does it save the chronology or any user messages, nor does it invoke any file actions
     //the color is also view related, and the usernames are multiplayer or savegame related
     //it's only the grid and nothing else
+    //update: later on I added in the move numbers as history, it ensures to copy games step by step
+    //the safe check for corrupt data is, that the container can only be filled by doMoveIntoColumn()
 
     //interface:
     /*

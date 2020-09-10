@@ -110,16 +110,33 @@ public class DrawGameBoard {
     }
 
     private void setPieceIsDrawn(int x, int y, int imageID) {
+        int testCounterMemLeak=0;
         for(Position element : gameBoardDrawHistory) {
+            testCounterMemLeak++; //for 7*8=56 there should only be 56 elements in the array
+            if(testCounterMemLeak>56) log.add("BUG setPieceIsDrawn(): overflow of gameBoardDrawHistory");
+
             if (element.x == x && element.y == y) {
                 if (element.checkOccupied) return;
-                else element.checkOccupied = true;
+                else {
+                    element.checkOccupied = true;
+                    element.imageViewID=imageID;
+                    return;
+                }
             } else {
-                Position pos = new Position(x, y, imageID);
-                gameBoardDrawHistory.add(pos);
-                return;
+                /*
+                log.add("setPieceIsDrawn(): element=["
+
+                        +Integer.toString(element.x)+","
+                        +Integer.toString(element.y)+"-"
+                        +Integer.toString(element.imageViewID)+"Drawn="
+                        +Boolean.toString(element.checkOccupied)+"]");
+                */
+                //Position pos = new Position(x, y, imageID);
+                //gameBoardDrawHistory.add(pos);
+                //return;
             }
         }
+        //log.add("setPieceIsDrawn(): new Element");
         Position pos = new Position(x, y, imageID);
         gameBoardDrawHistory.add(pos);
     }
@@ -225,10 +242,15 @@ public class DrawGameBoard {
     }
 
     private void removePieceDrawingIfOccupied(int x, int y){
+        int testCounterMemLeak=0;
         for(Position elementPosition : gameBoardDrawHistory){
+
+            testCounterMemLeak++; //for 7*8=56 there should only be 56 elements in the array
+            if(testCounterMemLeak>56) log.add("BUG setPieceIsDrawn(): overflow of gameBoardDrawHistory");
+
             if(elementPosition.x==x && elementPosition.y==y){
                 int imgID = elementPosition.imageViewID;
-                log.add("remove:id="+imgID);
+                //log.add("remove:id="+imgID);
                 ConstraintLayout constraintLayout = (ConstraintLayout) view.findViewById(constraintIDAllPieces);
                 ImageView imgDel = new ImageView(context);
                 imgDel.setId(imgID);
