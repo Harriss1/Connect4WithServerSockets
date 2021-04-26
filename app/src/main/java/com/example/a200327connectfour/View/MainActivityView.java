@@ -420,21 +420,4 @@ public class MainActivityView implements View.OnClickListener {
             return "DevMode";
         else return "none";
     }
-
-
-
-    /*
-private void handleInputTest(){
-    Button testBtn = (Button) view.findViewById(R.id.ButtonResumeLast);
-    final TextView testText = (TextView) view.findViewById(R.id.textViewTempGrid);
-
-    testBtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Toast.makeText(context,"implemenatations",Toast.LENGTH_LONG).show();
-            testText.setText("wtf!!!");
-        }
-    });
-}
-*/
 }
