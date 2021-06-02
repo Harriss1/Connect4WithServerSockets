@@ -383,7 +383,7 @@ public class MainActivityView implements View.OnClickListener {
     public void popupMenuAction(String menuID){
         switch (menuID){
             case "About" : {
-                Toast.makeText(context, "By Karl Klotz, September 2020", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "By Karl Klotz, Juni 2021", Toast.LENGTH_LONG).show();
                 if(aboutCounterForEnablingDevModeButton >= 2){
                     showDevModeActivationButton=true;
                 } else {

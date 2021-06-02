@@ -14,6 +14,8 @@ import com.example.a200327connectfour.View.MainActivityView;
 
 public class MainActivity extends AppCompatActivity {
 
+    //new ServerSocket Version started 02. Juni 2021
+
     Logging log = new Logging("MainActivity.java");
 
     @Override
